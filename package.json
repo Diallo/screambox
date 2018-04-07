@@ -1,0 +1,14 @@
+{
+  "name": "scream-box",
+  "version": "1.0.0",
+  "description": "Scream box",
+  "dependencies": {
+    "express": "^4.15.2",
+    "socket.io": "^2.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Diallo/screambox.git"
+  },
+  "license": "UNLICENSED"
+}
