@@ -10,12 +10,43 @@
         form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
         #messages { list-style-type: none; margin: 0; padding: 0; }
         #messages li { padding: 5px 10px; }
-        #messages li:nth-child(odd) { background: #eee; }
+
+        body {
+            background: cadetblue;
+        }
+        #messages li {
+            font-size: 3em;
+            color: white;
+            background: #2c797b8a;
+            border-radius: 10px;
+        }
+
+        /*DecodedPixel*/
+        #messages li{
+            animation: animateElement linear .3s;
+            animation-iteration-count: 1;
+            margin-bottom:5px;
+
+
+            border-radius:10px;
+        }
+
+        @keyframes animateElement{
+            0% {
+                opacity:0;
+                transform:  translate(0px,10px);
+            }
+            100% {
+                opacity:1;
+                transform:  translate(0px,0px);
+            }
+        }
     </style>
 </head>
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 <script>
+
     $(function () {
         var socket = io();
         $('form').submit(function(){
@@ -24,7 +55,8 @@
             return false;
         });
         socket.on('chat message', function(msg){
-            $('#messages').append($('<li>').text(msg));
+            $('#messages').append($('<li>').text(msg).css({'position':'absolute','left':Math.floor((Math.random() * 90) + 1)+'%','top':Math.floor((Math.random() * 90) + 1)+"%"}).delay(5000).hide(2000));
+
         });
         socket.on('usercount', function(msg){
             $("#usercount").html(msg);
